@@ -27,10 +27,13 @@ class FiltroForm(forms.Form):
         choices=[
             ('aprendiz', 'Jovem Aprendiz'),
             ('estagio', 'Estagiário'),
-            ('remoto', 'Remoto'),
         ]
     )
-    remoto = forms.BooleanField(required=False, label='Remoto')
+    remoto = forms.BooleanField(
+        required=False, 
+        label='Remoto',
+        widget=forms.CheckboxInput(attrs={'id': 'filtro_remoto'})
+)
 
 class EmpresaForm(forms.ModelForm):
     class Meta:

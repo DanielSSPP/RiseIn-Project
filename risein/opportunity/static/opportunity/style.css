@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    background: var(--primary);
+    background: var(--primary-light);
     color: white;
     padding: 20px 45px;
     display: flex;
@@ -49,7 +49,7 @@ header {
     border: none;
     box-shadow: var(--shadow-sm);
     outline: none;
-    min-width: 160px;
+    width: 400px;
 }
 
 .search-bar input:focus {
@@ -397,14 +397,15 @@ a:hover {
     background: var(--secondary-dark);
 }
 
-/* Container principal */
 .vaga-detalhe-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 25px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
 }
 
-/* Título */
 .vaga-titulo {
     font-size: 32px;
     font-weight: 700;
@@ -412,15 +413,11 @@ a:hover {
     margin-bottom: 25px;
 }
 
-/* Card com informações */
-.vaga-detalhes-card {
-    background: white;
-    padding: 30px 35px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
+.empresa-imagem{
+    max-width: 80px;
+    max-width: 80px;
 }
 
-/* Parágrafos */
 .vaga-detalhes-card p {
     font-size: 16px;
     color: var(--text-dark);
@@ -442,14 +439,12 @@ a:hover {
     color: var(--text-light);
 }
 
-/* Botões */
 .acoes {
     margin-top: 25px;
     display: flex;
     gap: 12px;
 }
 
-/* Botões padrão */
 .btn {
     padding: 10px 18px;
     border-radius: var(--radius);
@@ -459,7 +454,6 @@ a:hover {
     font-size: 15px;
 }
 
-/* Botão Editar */
 .btn.editar {
     background: var(--secondary);
     color: white;

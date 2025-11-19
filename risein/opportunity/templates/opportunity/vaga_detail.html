@@ -4,8 +4,11 @@
 <div class="vaga-detalhe-container">
 
     <h1 class="vaga-titulo">{{ vaga.titulo }}</h1>
-
-    <div class="vaga-detalhes-card">
+        {% if vaga.empresa.imagem %}
+            <img src="{{ vaga.empresa.imagem.url }}" alt="{{ vaga.empresa.nome }}" class="empresa-imagem">
+        {% else %}
+            <div class="empresa-imagem-placeholder"></div>
+        {% endif %}    
 
         <p><strong>Localização:</strong> {{ vaga.localizacao }}</p>
         <p><strong>Tipo:</strong> {{ vaga.get_tipo_display }}</p>
@@ -16,6 +19,17 @@
             {{ vaga.descricao }}
         </div>
 
+        <p>
+            <strong>Canditate-se:</strong> 
+            {% if vaga.empresa.site %}
+                <a href="{{ vaga.empresa.site }}" target="_blank" rel="noopener noreferrer">
+                    {{ vaga.empresa.site }}
+                </a>
+            {% else %}
+                Não informado
+            {% endif %}
+        </p>
+
         <p class="data-publicacao">
             Publicado em {{ vaga.data_publicacao|date:"d/m/Y" }}
         </p>
@@ -25,9 +39,6 @@
             <a class="btn excluir" href="{% url 'excluir_vaga' vaga.pk %}">Excluir</a>
             <a class="btn voltar" href="{% url 'home' %}">Voltar</a>
         </div>
-
-    </div>
-
 </div>
 
 {% endblock %}

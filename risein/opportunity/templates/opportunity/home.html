@@ -20,6 +20,10 @@
                     <label>{{ checkbox.choice_label }}</label>
                 </div>
             {% endfor %}
+            <div class="checkbox-group">
+                {{ form.remoto }}
+                <label for="{{ form.remoto.id_for_label }}">Remoto</label>
+            </div>
         </div>
 
         <button type="submit" class="btn">Filtrar</button>
@@ -31,13 +35,21 @@
 
         {% if vagas %}
             {% for vaga in vagas %}
-                <div class="vaga">
-                    <h3><a href="{% url 'detalhe_vaga' vaga.pk %}">{{ vaga.titulo }} - {{ vaga.tipo }}</a></h3>
-                    <p class="local">{{ vaga.localizacao }} · {% if vaga.remoto %}Remoto{% else %}Presencial{% endif %}</p>
-                    <p class="descricao">{{ vaga.descricao }}</p>
-                    <p class="data">{{ vaga.data_criacao|date:"d M Y" }}</p>
-                </div>
-            {% endfor %}
+    <div class="vaga">
+        <div class="vaga-header" style="display: flex; align-items: center; gap: 15px;">
+            {% if vaga.empresa.imagem %}
+                <img src="{{ vaga.empresa.imagem.url }}" alt="{{ vaga.empresa.nome }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px;">
+            {% else %}
+                <div style="width:60px; height:60px; background:#ddd; border-radius:10px;"></div>
+            {% endif %}
+            <h3><a href="{% url 'detalhe_vaga' vaga.pk %}">{{ vaga.titulo }} - {{ vaga.tipo }}</a></h3>
+        </div>
+        <p class="local">{{ vaga.localizacao }} · {% if vaga.remoto %}Remoto{% else %}Presencial{% endif %}</p>
+        <p class="descricao">{{ vaga.descricao }}</p>
+        <p class="data">{{ vaga.data_publicacao|date:"d M Y" }}</p>
+    </div>
+{% endfor %}
+
         {% else %}
             <p class="sem-vagas">Nenhuma vaga publicada ainda.</p>
         {% endif %}
