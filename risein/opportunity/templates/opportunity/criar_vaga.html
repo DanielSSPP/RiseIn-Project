@@ -1,0 +1,14 @@
+{% extends "opportunity/base.html" %}
+{% block content %}
+
+<h2>Cadastrar Nova Vaga</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Salvar Alterações{% else %}Publicar{% endif %}</button>
+</form>
+
+<a href="{% url 'home' %}">Voltar</a>
+
+{% endblock %}
