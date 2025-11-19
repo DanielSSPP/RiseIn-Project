@@ -45,6 +45,9 @@ cd risein
 pip install django
 ```
 ```
+pip install Pillow
+```
+```
 python manage.py makemigrations
 ```
 ```
