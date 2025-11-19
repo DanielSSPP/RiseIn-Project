@@ -36,19 +36,23 @@ cd risein
 ```
 
 **5. Rode os comandos:**
-
+```
 pip install django
-
+```
+```
 python manage.py makemigrations
-
+```
+```
 python manage.py migrate
-
+```
+```
 python manage.py createsuperuser
+```
 
 **Execute tudo nessa exata ordem para funcionar**
 
 **6. Inicialize o servidor:**
-
+```
 python manage.py runserver
-
+```
 no terminal terá um link para abrir no seu localhost
