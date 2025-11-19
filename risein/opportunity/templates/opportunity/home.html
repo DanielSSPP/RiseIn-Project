@@ -1,0 +1,31 @@
+{% extends "opportunity/base.html" %}
+{% block content %}
+<main>
+    <aside class="filters">
+        <h3>Filtros</h3>
+
+        <form method="get" action="{% url 'home' %}">
+            {{ form.tipo }}
+            <input type="text" name="localizacao" placeholder="Filtrar por localização" value="{{ request.GET.localizacao }}">
+            <button type="submit">Filtrar</button>
+        </form>
+    </aside>
+
+    <section class="vagas">
+        <h2>Oportunidades</h2>
+
+        {% if vagas %}
+            {% for vaga in vagas %}
+                <div class="vaga">
+                    <h3><a href="{% url 'detalhe_vaga' vaga.pk %}">{{ vaga.titulo }}</a></h3>
+                    <p class="local">{{ vaga.localizacao }} · {% if vaga.remoto %}Remoto{% else %}Presencial{% endif %}</p>
+                    <p class="descricao">{{ vaga.descricao }}</p>
+                    <p class="data">{{ vaga.data_criacao|date:"d M Y" }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="sem-vagas">Nenhuma vaga publicada ainda.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
