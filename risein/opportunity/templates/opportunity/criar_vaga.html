@@ -1,14 +1,62 @@
 {% extends "opportunity/base.html" %}
 {% block content %}
 
-<h2>Cadastrar Nova Vaga</h2>
+<div class="form-container">
+    <a class="btn-voltar" href="{% url 'home' %}">Voltar</a>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% if form.instance.pk %}Salvar Alterações{% else %}Publicar{% endif %}</button>
-</form>
+    <div class="form-header">
+        {% if form.instance.pk %}
+                <h2>Editar Vaga</h2>  
+            {% else %}
+                <h2>Cadastrar Nova Vaga</h2>  
+            {% endif %}   
+    </div>
 
-<a href="{% url 'home' %}">Voltar</a>
+    <form method="post" class="vaga-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.titulo.id_for_label }}">Título</label>
+            {{ form.titulo }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.empresa.id_for_label }}">Empresa</label>
+            {{ form.empresa }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+            {{ form.descricao }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.localizacao.id_for_label }}">Localização</label>
+            {{ form.localizacao }}
+        </div>
+
+        <div class="horizontal-group">
+            <label class="switch-text">Remoto</label>
+            <label class="switch">
+                {{ form.remoto }}
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.tipo.id_for_label }}">Tipo</label>
+            {{ form.tipo }}
+        </div>
+
+        <button class="btn-submit" type="submit">
+            {% if form.instance.pk %}
+                Salvar Alterações
+            {% else %}
+                Publicar
+            {% endif %}
+        </button>
+    </form>
+
+</div>
 
 {% endblock %}

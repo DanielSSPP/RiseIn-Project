@@ -4,12 +4,13 @@ from .models import Vaga, Empresa
 class VagaForm(forms.ModelForm):
     class Meta:
         model = Vaga
-        fields = ['titulo', 'empresa', 'descricao', 'localizacao', 'tipo']
+        fields = ['titulo', 'empresa', 'descricao', 'localizacao', 'tipo','remoto']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'empresa': forms.Select(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
             'localizacao': forms.TextInput(attrs={'class': 'form-control'}),
+            'remoto': forms.CheckboxInput(attrs={'class': 'switch-input'}),
             'tipo': forms.Select(attrs={'class': 'form-control'}),
         }
 

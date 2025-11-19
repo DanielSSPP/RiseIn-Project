@@ -20,7 +20,6 @@ body {
     font-family: "Inter", Arial, sans-serif;
     background: var(--bg);
     color: var(--text-dark);
-    line-height: 1.6;
 }
 
 header {
@@ -118,6 +117,7 @@ main {
     flex: 1;
     background: white;
     padding: 25px;
+    flex-shrink: 0;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
     position: sticky;
@@ -166,10 +166,11 @@ main {
 }
 
 .vagas {
-    flex: 3;
+    flex: 4;
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 50%;
 }
 
 .vagas h2 {
@@ -238,30 +239,251 @@ main {
     margin: 0 auto; 
 }
 
-form button[type="submit"] {
-    background: var(--secondary);
-    border: none;
-    padding: 12px 20px;
-    color: white;
-    border-radius: var(--radius);
-    cursor: pointer;
-    margin-top: 12px;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-group label {
     font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--primary);
+}
+
+.form-control {
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid #d9dce1;
     box-shadow: var(--shadow-sm);
 }
 
-form button[type="submit"]:hover {
-    background: var(--secondary-dark);
+.form-control:focus {
+    border-color: var(--secondary);
 }
 
-a {
-    color: var(--secondary);
-    font-weight: 500;
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.form-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.switch-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.switch-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: 0.3s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch-input:checked + .slider {
+    background-color: var(--secondary);
+}
+
+.switch-input:checked + .slider::before {
+    transform: translateX(22px);
+}
+
+.switch-label {
+    font-weight: 600;
+    color: var(--primary);
+}
+
 
 a:hover {
     color: var(--secondary-dark);
 }
+
+.form-container {
+    max-width: 650px;
+    background: white;
+    padding: 35px 45px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    margin: 0 auto;
+}
+
+.form-header {
+    align-items: center;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+.form-header h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin: 0;
+}
+
+.btn-voltar {
+    text-decoration: none;
+    color: var(--secondary-dark);
+    font-weight: 600;
+    transition: 0.25s;
+    font-weight: 600;
+}
+
+.btn-voltar:hover {
+    color: var(--secondary);
+}
+
+.horizontal-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 25px;
+}
+
+.switch-text {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.btn-submit {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: var(--shadow-sm);
+    transition: 0.25s;
+}
+
+.btn-submit:hover {
+    background: var(--secondary-dark);
+}
+
+/* Container principal */
+.vaga-detalhe-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+/* Título */
+.vaga-titulo {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+/* Card com informações */
+.vaga-detalhes-card {
+    background: white;
+    padding: 30px 35px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+/* Parágrafos */
+.vaga-detalhes-card p {
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.vaga-descricao {
+    background: #f8f9fb;
+    padding: 12px 15px;
+    border-radius: var(--radius);
+    margin-top: 6px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.data-publicacao {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+/* Botões */
+.acoes {
+    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+}
+
+/* Botões padrão */
+.btn {
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    font-size: 15px;
+}
+
+/* Botão Editar */
+.btn.editar {
+    background: var(--secondary);
+    color: white;
+}
+.btn.editar:hover {
+    background: var(--secondary-dark);
+}
+
+.btn.excluir {
+    background: #e74c3c;
+    color: white;
+}
+.btn.excluir:hover {
+    background: #c0392b;
+}
+
+.btn.voltar {
+    background: #bdc3c7;
+    color: white;
+}
+.btn.voltar:hover {
+    background: #a0a4a7;
+}
+
 
 @media (max-width: 900px) {
     main {

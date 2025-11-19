@@ -18,9 +18,10 @@ def home(request):
         tipo = form.cleaned_data.get('tipo')
         remoto = form.cleaned_data.get('remoto')
 
-
         if busca:
-            vagas = vagas.filter(titulo__icontains=busca)
+            vagas = vagas.filter(
+                titulo__icontains=busca
+            )
         if localizacao:
             vagas = vagas.filter(localizacao__icontains=localizacao)
         if tipo:
@@ -28,8 +29,8 @@ def home(request):
         if remoto:
             vagas = vagas.filter(remoto=True)
 
-
     return render(request, 'opportunity/home.html', {'form': form, 'vagas': vagas})
+
 
 
 @staff_member_required
