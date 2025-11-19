@@ -27,7 +27,12 @@ git clone https://github.com/DanielSSPP/RiseIn-Project.git
 
 **2. Crie o ambiente virtual:**
 ```
-python -m venv
+python -m venv .venv
+```
+
+**3. Ative o ambiente virtual:**
+```
+.venv\Scripts\activate
 ```
 
 **4. Acesse a pasta da aplicação:**
