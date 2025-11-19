@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Rise In</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'opportunity/style.css' %}?v=999">
+</head>
+<body>
+
+<header>
+    <div class="logo">RiseIn</div>
+
+    <div class="search-bar">
+        <form method="get" action="{% url 'home' %}">
+            <input type="text" name="busca" placeholder="Palavra-chave" value="{{ request.GET.busca }}">
+            <input type="text" name="localizacao" placeholder="Localização" value="{{ request.GET.localizacao }}">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <div class="user-actions">
+        {% if user.is_authenticated and user.is_staff %}
+            <a href="{% url 'criar_vaga' %}" class="btn">Divulgar vaga</a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Sair</button>
+            </form>
+        {% else %}
+            <a href="/admin/login/" class="btn">Entrar</a>
+        {% endif %}
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>
